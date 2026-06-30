@@ -1,0 +1,6 @@
+{
+  "name": "Dashboard Monitoring Produktivitas Packer",
+  "description": "Web dashboard untuk memantau produktivitas harian (Shift 1, 2, 3) dan bulanan tim Packer berdasarkan data real-time dari Google Sheets.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
