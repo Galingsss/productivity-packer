@@ -93,21 +93,22 @@ export default function App() {
 
   // Render a Single Leaderboard Column Card
   const renderColumnCard = (title: string, records: PackerRecord[], isMonthly: boolean = false) => {
-    // Calculate average score for monthly list to determine the baseline dynamically
-    const average = isMonthly && records.length > 0
-      ? records.reduce((sum, item) => sum + item.point, 0) / records.length
-      : 0;
+    // Dynamic monthly baseline target calculations:
+    // 50 points per day, with 1 day off in a week (6 working days out of 7).
+    // Target = Current Day * (6/7) * 50
+    const currentDay = currentTime.getDate();
+    const monthlyTarget = Math.round(currentDay * (6 / 7) * 50);
 
     // Threshold calculation for Packer POINT:
-    // Daily target: green if point >= 40, else red.
-    // Monthly target: green if point >= average of the list, else red.
+    // Daily target: green if point >= 50, else red.
+    // Monthly target: green if point >= monthlyTarget, else red.
     const getBadgeStyle = (point: number) => {
       if (isMonthly) {
-        return point >= average
+        return point >= monthlyTarget
           ? 'bg-[#d1fae5] text-[#065f46]'
           : 'bg-[#fee2e2] text-[#991b1b]';
       } else {
-        return point >= 40
+        return point >= 50
           ? 'bg-[#d1fae5] text-[#065f46]'
           : 'bg-[#fee2e2] text-[#991b1b]';
       }
@@ -121,14 +122,12 @@ export default function App() {
             {title}
           </h2>
           {isMonthly ? (
-            records.length > 0 && (
-              <p className="text-[10px] font-black text-teal-600 tracking-wide uppercase mt-0.5">
-                Rata-Rata: {average.toFixed(1)} Pts
-              </p>
-            )
+            <p className="text-[10px] font-black text-slate-500 tracking-wide uppercase mt-0.5">
+              Target Berjalan: ≥{monthlyTarget} Pts
+            </p>
           ) : (
-            <p className="text-[10px] font-black text-indigo-600 tracking-wide uppercase mt-0.5">
-              Target: ≥40 Pts
+            <p className="text-[10px] font-black text-slate-500 tracking-wide uppercase mt-0.5">
+              Target: ≥50 Pts
             </p>
           )}
           {/* Blue accent line exactly as in previous Productivity Picker */}
