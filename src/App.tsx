@@ -105,12 +105,12 @@ export default function App() {
     const getBadgeStyle = (point: number) => {
       if (isMonthly) {
         return point >= monthlyTarget
-          ? 'bg-[#d1fae5] text-[#065f46]'
-          : 'bg-[#fee2e2] text-[#991b1b]';
+          ? 'bg-[#d1fae5] text-black font-black'
+          : 'bg-[#fee2e2] text-black font-black';
       } else {
         return point >= 50
-          ? 'bg-[#d1fae5] text-[#065f46]'
-          : 'bg-[#fee2e2] text-[#991b1b]';
+          ? 'bg-[#d1fae5] text-black font-black'
+          : 'bg-[#fee2e2] text-black font-black';
       }
     };
 
@@ -135,10 +135,10 @@ export default function App() {
         </div>
 
         {/* Table Headings */}
-        <div className="grid grid-cols-12 px-4 py-1.5 bg-slate-50/50 border-b border-slate-100 text-[11px] font-extrabold text-[#64748b] tracking-wider select-none">
-          <span className="col-span-7">NAMA</span>
-          <span className="col-span-2 text-center">SO</span>
-          <span className="col-span-3 text-right pr-2">POINT</span>
+        <div className="grid grid-cols-12 px-4 py-2 bg-slate-100 border-b border-slate-200 text-sm font-black text-black tracking-wider select-none">
+          <span className="col-span-6">NAMA</span>
+          <span className="col-span-3 text-center">SO</span>
+          <span className="col-span-3 text-right pr-4">POINT</span>
         </div>
 
         {/* Records List */}
@@ -151,21 +151,21 @@ export default function App() {
             records.map((item) => (
               <div
                 key={item.name}
-                className="grid grid-cols-12 items-center px-3 py-2 text-slate-900 transition hover:bg-slate-50/60"
+                className="grid grid-cols-12 items-center px-4 py-2.5 transition hover:bg-slate-100/80 border-b border-slate-100"
               >
                 {/* Packer Name */}
-                <span className="col-span-7 font-black text-[13px] tracking-wide text-slate-950 uppercase truncate pr-1">
+                <span className="col-span-6 font-black text-sm md:text-base tracking-wide text-black uppercase truncate pr-2">
                   {item.name}
                 </span>
 
                 {/* Sales Order Count */}
-                <span className="col-span-2 text-center font-extrabold text-sm text-slate-600">
+                <span className="col-span-3 text-center font-black text-base md:text-lg text-black">
                   {item.so}
                 </span>
 
                 {/* Point Highlight Badge */}
                 <div className="col-span-3 flex justify-end pr-1">
-                  <span className={`inline-block font-black text-sm px-3.5 py-1 rounded min-w-[54px] text-center tracking-tight shadow-sm ${getBadgeStyle(item.point)}`}>
+                  <span className={`inline-block font-black text-lg md:text-xl px-4 py-1.5 rounded min-w-[64px] text-center tracking-tight shadow-sm ${getBadgeStyle(item.point)}`}>
                     {item.point}
                   </span>
                 </div>
