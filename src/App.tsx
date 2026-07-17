@@ -117,7 +117,7 @@ export default function App() {
     return (
       <div className="flex flex-col bg-white border border-slate-200 rounded-lg shadow-sm overflow-hidden h-full">
         {/* Card Header Title */}
-        <div className="pt-4 pb-2 px-4 text-center">
+        <div className="pt-2 pb-1.5 px-4 text-center">
           <h2 className="text-sm font-black tracking-wider text-blue-900 uppercase">
             {title}
           </h2>
@@ -131,18 +131,18 @@ export default function App() {
             </p>
           )}
           {/* Blue accent line exactly as in previous Productivity Picker */}
-          <div className="h-[3px] bg-[#2563eb] w-full mt-2 rounded-full" />
+          <div className="h-[3px] bg-[#2563eb] w-full mt-1.5 rounded-full" />
         </div>
 
         {/* Table Headings */}
-        <div className="grid grid-cols-12 px-4 py-2 bg-slate-100 border-b border-slate-200 text-sm font-black text-black tracking-wider select-none">
+        <div className="grid grid-cols-12 px-4 py-1.5 bg-slate-100 border-b border-slate-200 text-sm font-black text-black tracking-wider select-none">
           <span className="col-span-6">NAMA</span>
           <span className="col-span-3 text-center">SO</span>
           <span className="col-span-3 text-right pr-4">POINT</span>
         </div>
 
         {/* Records List */}
-        <div className="flex-1 divide-y divide-slate-100 overflow-y-auto no-scrollbar px-1 max-h-[70vh] md:max-h-[calc(100vh-270px)] lg:max-h-[calc(100vh-235px)] xl:max-h-[calc(100vh-215px)] min-h-[420px]">
+        <div className="flex-1 divide-y divide-slate-100 overflow-y-auto no-scrollbar px-1 max-h-[78vh] md:max-h-[calc(100vh-185px)] lg:max-h-[calc(100vh-155px)] xl:max-h-[calc(100vh-135px)] min-h-[450px]">
           {records.length === 0 ? (
             <div className="py-12 text-center text-xs font-semibold text-slate-400">
               Belum ada data packer aktif
@@ -151,7 +151,7 @@ export default function App() {
             records.map((item) => (
               <div
                 key={item.name}
-                className="grid grid-cols-12 items-center px-4 py-2.5 transition hover:bg-slate-100/80 border-b border-slate-100"
+                className="grid grid-cols-12 items-center px-4 py-1.5 transition hover:bg-slate-100/80 border-b border-slate-100"
               >
                 {/* Packer Name */}
                 <span className="col-span-6 font-black text-sm md:text-base tracking-wide text-black uppercase truncate pr-2">
@@ -165,7 +165,7 @@ export default function App() {
 
                 {/* Point Highlight Badge */}
                 <div className="col-span-3 flex justify-end pr-1">
-                  <span className={`inline-block font-black text-lg md:text-xl px-4 py-1.5 rounded min-w-[64px] text-center tracking-tight shadow-sm ${getBadgeStyle(item.point)}`}>
+                  <span className={`inline-block font-black text-lg md:text-xl px-4 py-1 rounded min-w-[64px] text-center tracking-tight shadow-sm ${getBadgeStyle(item.point)}`}>
                     {item.point}
                   </span>
                 </div>
@@ -180,15 +180,15 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[#f1f5f9] text-slate-800 font-sans flex flex-col justify-between">
       {/* Top Header Panel */}
-      <header className="bg-white border-b border-slate-200/80 px-6 py-4 shadow-xs">
-        <div className="w-full flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+      <header className="bg-white border-b border-slate-200/80 px-6 py-2 shadow-xs">
+        <div className="w-full flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
           
           {/* Brand/Title Block */}
-          <div className="space-y-1">
-            <h1 className="text-3xl font-black tracking-tight text-slate-950 uppercase">
+          <div className="space-y-0.5">
+            <h1 className="text-xl md:text-2xl font-black tracking-tight text-slate-950 uppercase leading-tight">
               PRODUKTIVITAS PACKER
             </h1>
-            <p className="text-xs font-extrabold text-[#2563eb] tracking-wide flex items-center gap-1.5">
+            <p className="text-[10px] font-extrabold text-[#2563eb] tracking-wide flex items-center gap-1.5">
               <span>Update: {formatTimeDot(lastUpdated)}</span>
               {isFetching && (
                 <span className="inline-block animate-spin rounded-full h-3 w-3 border border-t-transparent border-[#2563eb]" />
@@ -198,10 +198,10 @@ export default function App() {
 
           {/* Clock & Indonesian Date Block */}
           <div className="text-left md:text-right flex flex-col justify-center">
-            <div className="text-4xl md:text-5xl font-black text-[#2563eb] font-mono tracking-wider leading-none">
+            <div className="text-2xl md:text-3xl font-black text-[#2563eb] font-mono tracking-wider leading-none">
               {formatTimeDot(currentTime)}
             </div>
-            <div className="text-xs font-black text-slate-500 tracking-wider mt-1.5 uppercase">
+            <div className="text-[10px] font-black text-slate-500 tracking-wider mt-0.5 uppercase">
               {formatIndonesianDate(currentTime)}
             </div>
           </div>
@@ -209,7 +209,7 @@ export default function App() {
       </header>
 
       {/* Main Grid View of 4 Parallel Columns */}
-      <main className="flex-1 p-4 md:p-6">
+      <main className="flex-1 p-2 md:p-4">
         {!data ? (
           /* Error / Loading Fallback State */
           <div className="max-w-md mx-auto my-20 bg-white border border-slate-200 rounded-xl p-6 text-center shadow-md space-y-4">
@@ -248,7 +248,7 @@ export default function App() {
       </main>
 
       {/* Subtle control / status footer bar */}
-      <footer className="bg-white border-t border-slate-200/80 py-3 px-6 text-xs text-slate-500 flex flex-col sm:flex-row justify-between items-center gap-2">
+      <footer className="bg-white border-t border-slate-200/80 py-1.5 px-6 text-xs text-slate-500 flex flex-col sm:flex-row justify-between items-center gap-2">
         <div className="flex items-center gap-3">
           <span className="font-semibold">Sistem Monitoring Packer v1.1.0</span>
           <span className="text-slate-300">|</span>
